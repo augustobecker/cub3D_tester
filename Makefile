@@ -6,7 +6,7 @@
 #    By: acesar-l <acesar-l@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/25 16:02:17 by acesar-l          #+#    #+#              #
-#    Updated: 2023/05/27 00:14:30 by acesar-l         ###   ########.fr        #
+#    Updated: 2023/05/27 01:01:58 by acesar-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,8 @@ TESTS			=	${PATH_TEST}/check-for-no-file.sh				\
 all:		m
 
 m:			game permission tester
+
+now:		game permission tester-now
 
 game:
 			@ make -C ${PATH_GAME}
@@ -77,7 +79,7 @@ invalid-paramater-map:
 			@ ./${PATH_TEST}/check-for-invalid-map-parameter.sh
 
 invalid-texture-elem:
-			@ ./${PATH_TEST}/check-for-invalid-texture-element.sh
+			@ ./${PATH_TEST}/check-for-invalid-texture-element-path.sh
 
 miss-texture-elem:
 			@ ./${PATH_TEST}/check-for-missing-texture-element.sh
@@ -93,6 +95,22 @@ miss-color-elem:
 
 mult-color-elem:
 			@ ./${PATH_TEST}/check-for-multiple-color-element.sh
+
+tester-now:
+			@ echo
+			@ echo "${PURPLE}***************************************************************${RESET}"
+			@ echo "${PURPLE}*                      cub3d_tester                           *${RESET}"
+			@ echo "${PURPLE}***************************************************************${RESET}"
+			@ echo
+			@ ./${PATH_TEST}/check-for-not-a-real-file.sh
+			@ ./${PATH_TEST}/check-for-missing-argv.sh
+			@ ./${PATH_TEST}/check-for-multiple-argv.sh
+			@ ./${PATH_TEST}/check-for-invalid-extension.sh
+			@ ./${PATH_TEST}/check-for-empty-file.sh
+			@ ./${PATH_TEST}/check-for-invalid-texture-element-path.sh
+			@ echo
+			@ echo "${PURPLE}***************************************************************${RESET}"
+			@ echo
 
 tester:
 			@ echo
@@ -110,7 +128,7 @@ tester:
 			@ ./${PATH_TEST}/check-for-missing-starting-pos.sh
 			@ ./${PATH_TEST}/check-for-extra-starting-pos.sh
 			@ ./${PATH_TEST}/check-for-invalid-map-parameter.sh
-			@ ./${PATH_TEST}/check-for-invalid-texture-element.sh
+			@ ./${PATH_TEST}/check-for-invalid-texture-element-path.sh
 			@ ./${PATH_TEST}/check-for-missing-texture-element.sh
 			@ ./${PATH_TEST}/check-for-multiple-texture-element.sh
 			@ ./${PATH_TEST}/check-for-invalid-color.sh
@@ -125,4 +143,4 @@ tester:
 			map-not-surrounded-walls miss-start-pos mult-start-pos \
 			invalid-paramater-map invalid-texture-elem \
 			miss-texture-elem mult-texure-elem invalid-color \
-			miss-color-elem mult-color-elem tester
+			miss-color-elem mult-color-elem tester tester-now
