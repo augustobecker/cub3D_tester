@@ -1,0 +1,9 @@
+SO textures/SO.texture
+NO textures/NO.texture
+WE textures/WE.texture
+EA textures/EA.texture
+F 121,112,121
+C 13,13,121
+11111111111111111
+1000N0111111111111
+11111111111111111
