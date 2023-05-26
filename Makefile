@@ -6,7 +6,7 @@
 #    By: acesar-l <acesar-l@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/25 16:02:17 by acesar-l          #+#    #+#              #
-#    Updated: 2023/05/26 23:57:21 by acesar-l         ###   ########.fr        #
+#    Updated: 2023/05/27 00:14:30 by acesar-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ RESET			= \033[0m
 PATH_TEST		= tests
 PATH_GAME		= ../
 
-TESTS			=	${PATH_TEST}/check-for-empty-file.sh			\
+TESTS			=	${PATH_TEST}/check-for-no-file.sh				\
+			${PATH_TEST}/check-for-empty-file.sh					\
 			${PATH_TEST}/check-for-missing-argv.sh					\
 			${PATH_TEST}/check-for-multiple-argv.sh					\
 			${PATH_TEST}/check-for-invalid-extension.sh				\
@@ -44,6 +45,9 @@ game:
 
 permission:
 			@chmod -R a+x *
+
+no-file:
+			@ ./${PATH_TEST}/check-for-not-a-real-file.sh
 
 miss-argv:
 			@ ./${PATH_TEST}/check-for-missing-argv.sh
@@ -96,6 +100,7 @@ tester:
 			@ echo "${PURPLE}*                      cub3d_tester                           *${RESET}"
 			@ echo "${PURPLE}***************************************************************${RESET}"
 			@ echo
+			@ ./${PATH_TEST}/check-for-not-a-real-file.sh
 			@ ./${PATH_TEST}/check-for-missing-argv.sh
 			@ ./${PATH_TEST}/check-for-multiple-argv.sh
 			@ ./${PATH_TEST}/check-for-invalid-extension.sh
@@ -115,8 +120,9 @@ tester:
 			@ echo "${PURPLE}***************************************************************${RESET}"
 			@ echo
 
-.PHONY:		all m game permission miss-argv mult-argv invalid-extension \
-			empty-file empty-line-map map-not-surrounded-walls miss-start-pos \
-			mult-start-pos invalid-paramater-map invalid-texture-elem \
-			miss-texture-elem mult-texure-elem invalid-color miss-color-elem \
-			mult-color-elem tester
+.PHONY:		all m game permission no-file miss-argv mult-argv \
+			invalid-extension empty-file empty-line-map \
+			map-not-surrounded-walls miss-start-pos mult-start-pos \
+			invalid-paramater-map invalid-texture-elem \
+			miss-texture-elem mult-texure-elem invalid-color \
+			miss-color-elem mult-color-elem tester
